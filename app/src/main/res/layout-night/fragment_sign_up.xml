@@ -73,6 +73,7 @@
             android:orientation="vertical"
             android:gravity="center">
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/nameLayout"
                 android:layout_width="match_parent"
@@ -152,41 +153,40 @@
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/birthdayLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40sp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="40sp"
-                app:boxCornerRadiusBottomEnd="20sp"
-                app:boxCornerRadiusBottomStart="20sp"
-                app:boxCornerRadiusTopEnd="20sp"
-                app:boxCornerRadiusTopStart="20sp"
-                app:boxStrokeWidth="0dp"
-                app:boxStrokeWidthFocused="0dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/passSignUpLayout"
-                app:startIconDrawable="@drawable/ic_birthday">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/birthday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/birthday"
-                    android:inputType="date" />
-            </com.google.android.material.textfield.TextInputLayout>
-
             <Button
                 android:id="@+id/btnSignUp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/sign_up"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/birthdayLayout"
-                app:layout_constraintStart_toStartOf="@+id/birthdayLayout"
-                app:layout_constraintTop_toBottomOf="@+id/birthdayLayout" />
+                app:layout_constraintEnd_toEndOf="@+id/passSignUpLayout"
+                app:layout_constraintStart_toStartOf="@+id/passSignUpLayout"
+                app:layout_constraintTop_toBottomOf="@+id/passSignUpLayout"
+                app:layout_constraintVertical_bias="0.8" />
+
+            <Spinner
+                android:id="@+id/tipeAkun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toTopOf="@+id/btnSignUp"
+                app:layout_constraintEnd_toEndOf="@+id/passSignUpLayout"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/passSignUpLayout"
+                app:layout_constraintTop_toBottomOf="@+id/keteranganPassword"
+                app:layout_constraintVertical_bias="0.2" />
+
+            <TextView
+                android:id="@+id/keteranganPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/password_harus_minimal_6_karakter"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/passSignUpLayout"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/passSignUpLayout"
+                app:layout_constraintTop_toBottomOf="@+id/passSignUpLayout"
+                app:layout_constraintVertical_bias="0.05" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
