@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "756438801833",
+    "firebase_url": "https://kila-2020.firebaseio.com",
+    "project_id": "kila-2020",
+    "storage_bucket": "kila-2020.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:756438801833:android:b0aee9d37b932822e7b8b8",
+        "android_client_info": {
+          "package_name": "com.ndaktau.kila"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "756438801833-hjrfjfjonb2fsi2b0vmkk450oret7lch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ndaktau.kila",
+            "certificate_hash": "5f4d6e86d3d0432c854ad7da03173ed686fbaba7"
+          }
+        },
+        {
+          "client_id": "756438801833-9e1tba5qovp80hqsjr30mmcbpcq6tgfc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVFEMZXUA9h-4CEvpBZRNafjPJTg_TlO4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "756438801833-9e1tba5qovp80hqsjr30mmcbpcq6tgfc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

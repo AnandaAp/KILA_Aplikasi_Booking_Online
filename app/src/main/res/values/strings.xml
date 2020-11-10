@@ -13,4 +13,10 @@
     <string name="back_button">Back Button</string>
     <string name="add_photo">Add Photo</string>
     <string name="name">Name</string>
+    <string name="password_harus_minimal_6_karakter">Password harus minimal 6 karakter</string>
+    <string name="tipe_akun">Tipe Akun:</string>
+    <string-array name="tipe_akun">
+        <item>Pengguna</item>
+        <item>Administrator</item>
+    </string-array>
 </resources>
