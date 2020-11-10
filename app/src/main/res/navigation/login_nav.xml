@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/login_nav"
+    app:startDestination="@id/NavToSignIn">
+    <fragment
+        android:id="@+id/NavToSignIn"
+        android:name="com.ndaktau.kila.login_fragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_fragment_to_signUp2"
+            app:destination="@id/NavToSignUp"
+            app:enterAnim="@anim/fragment_open_exit"
+            app:exitAnim="@anim/fragment_open_enter" />
+    </fragment>
+    <fragment
+        android:id="@+id/NavToSignUp"
+        android:name="com.ndaktau.kila.SignUp"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up">
+        <action
+            android:id="@+id/action_signUp2_to_login_fragment"
+            app:destination="@id/NavToSignIn"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popUpTo="@id/NavToSignIn" />
+    </fragment>
+</navigation>
