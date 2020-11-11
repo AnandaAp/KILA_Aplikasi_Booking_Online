@@ -1,7 +1,13 @@
 package com.ndaktau.kila;
 
+import android.content.ContentResolver;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -9,14 +15,17 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -24,23 +33,32 @@ import androidx.navigation.Navigation;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
+import static android.app.Activity.RESULT_OK;
+
 public class SignUp extends Fragment implements AdapterView.OnItemSelectedListener {
     private final String TAG = "com.ndaktau.kila.SignUp";
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^.{6,}$");
-    private TextView passKriteria;
+    private static final int PICK_IMAGE = 100;
     private FirebaseAuth mAuth;
+    private StorageReference mStorageRef;
+    private FirebaseFirestore db;
     private Button btnSignUp;
-    private ImageView back;
+    private ImageView back,addPhoto;
     private TextInputLayout name,email,pass;
-    private Spinner tipeAkun;
     private String tipeAkunYangDipilih;
+    private Uri addImage;
+    private Map<String, Object> user;
+    private ProgressBar progressBar;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,10 +73,11 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
         back = view.findViewById(R.id.backButton);
         btnSignUp = view.findViewById(R.id.btnSignUp);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db = FirebaseFirestore.getInstance();
+        mStorageRef = FirebaseStorage.getInstance().getReference("foto_profil");
         mAuth = FirebaseAuth.getInstance();
         init(view);
-        signUpProcess(db);
+        signUpProcess();
         return view;
     }
 
@@ -66,17 +85,21 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
         name =  view.findViewById(R.id.nameLayout);
         email = view.findViewById(R.id.emSignUpLayout);
         pass =  view.findViewById(R.id.passSignUpLayout);
-        tipeAkun = view.findViewById(R.id.tipeAkun);
+        progressBar = view.findViewById(R.id.progress_bar);
+        Spinner tipeAkun = view.findViewById(R.id.tipeAkun);
+        addPhoto = view.findViewById(R.id.addPhoto);
+        addPhoto.setOnClickListener(v -> openGallery());
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext()
                 ,R.array.tipe_akun, android.R.layout.simple_list_item_1);
         tipeAkun.setAdapter(adapter);
-        tipeAkun.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+        tipeAkun.setOnItemSelectedListener(this);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         //mengecek apakah sistem memakai dark mode atau tidak
         int currentNightMode = requireContext().getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         switch (currentNightMode) {
             case Configuration.UI_MODE_NIGHT_NO:
-                passKriteria = view.findViewById(R.id.keteranganPassword);
+                TextView passKriteria = view.findViewById(R.id.keteranganPassword);
                 passKriteria.setTextColor(ResourcesCompat.getColor(getResources()
                         , R.color.pasificBlue, null));
 
@@ -163,25 +186,36 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
     private void navToSignIn(View v){
         Navigation.findNavController(v).navigate(R.id.NavToSignIn);
     }
-    private void signUpProcess(FirebaseFirestore db){
-        btnSignUp.setOnClickListener(v -> addToDB(db,v));
+    private void signUpProcess(){
+        btnSignUp.setOnClickListener(this::addToDB);
     }
-    private boolean addToDB(FirebaseFirestore db,View view){
+    private void addToDB(View view){
         if (!validateEmail() | !validateUsername() | !validatePassword()) {
-            return false;
+            Log.i(TAG, "addToDB: input user belum sesuai validasi");
         }
         else {
-            mAuth.fetchSignInMethodsForEmail(email.getEditText().getText().toString()).addOnCompleteListener(t -> {
-                if(t.getResult().getSignInMethods().size() == 0){
+            mAuth.fetchSignInMethodsForEmail(Objects.requireNonNull(email.getEditText()).getText().toString()).addOnCompleteListener(t -> {
+                if(Objects.requireNonNull(Objects.requireNonNull(t.getResult()).getSignInMethods()).size() == 0){
                     //create user account
                     mAuth.createUserWithEmailAndPassword(email.getEditText().getText().toString()
-                            , pass.getEditText().getText().toString())
+                            , Objects.requireNonNull(pass.getEditText()).getText().toString())
                             .addOnCompleteListener(requireActivity(), task -> {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
                                     Toast.makeText(requireContext(),"Akun berhasil dibuat",Toast.LENGTH_LONG).show();
-                                    navToSignIn(view);
+                                    uploadFile();
+//                                .add(user)
+//                                .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId()))
+//                                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
+//                                    sendPicture();
+                                    try {
+                                        Thread.sleep(4000);
+                                        navToSignIn(view);
+                                        requireActivity().getFragmentManager().popBackStack();
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    }
                                     /*updateUI(user);*/
                                 } else {
                                     // If sign in fails, display a message to the user.
@@ -192,38 +226,17 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
                                 }
                             });
 
-                    name.setErrorEnabled(false);
-                    email.setErrorEnabled(false);
-                    pass.setErrorEnabled(false);
-                    // Create a new user with a first and last name
-                    Map<String, Object> user = new HashMap<>();
-                    user.put("Name", name.getEditText().getText().toString());
-                    user.put("Email", email.getEditText().getText().toString());
-                    user.put("Password", pass.getEditText().getText().toString());
-                    user.put("Tipe Akun",tipeAkunYangDipilih);
-
-                    // Add a new document with a generated ID
-                    db.collection("users")
-                            .document(name.getEditText().getText().toString())
-                            .set(user)
-                            .addOnSuccessListener(e -> Log.d(TAG, "onComplete: DocumentSnapshot added with ID: "+name.getEditText().getText().toString()))
-                            .addOnFailureListener(e -> Log.w(TAG, "onFailure: Error adding document", e));
-//                                .add(user)
-//                                .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId()))
-//                                .addOnFailureListener(e -> Log.w(TAG, "Error adding document", e));
                 }
                 else{
                     email.setError("Email sudah terdaftar");
                     email.setErrorEnabled(true);
-                    return;
                 }
             }).addOnFailureListener(Throwable::printStackTrace);
 
         }
-        return true;
     }
     private boolean validateEmail() {
-        String emailInput = email.getEditText().getText().toString().trim();
+        String emailInput = Objects.requireNonNull(email.getEditText()).getText().toString().trim();
         if (emailInput.isEmpty()) {
             email.setError("Email tidak boleh kosong");
             return false;
@@ -236,7 +249,7 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
         }
     }
     private boolean validateUsername() {
-        String usernameInput = name.getEditText().getText().toString().trim();
+        String usernameInput = Objects.requireNonNull(name.getEditText()).getText().toString().trim();
         if (usernameInput.isEmpty()) {
             name.setError("Nama tidak boleh kosong");
             return false;
@@ -246,7 +259,7 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
         }
     }
     private boolean validatePassword() {
-        String passwordInput = pass.getEditText().getText().toString().trim();
+        String passwordInput = Objects.requireNonNull(pass.getEditText()).getText().toString().trim();
         if (passwordInput.isEmpty()) {
             pass.setError("Password tidak boleh kosong");
             return false;
@@ -268,4 +281,76 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
+
+    private void openGallery(){
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            assert data != null;
+            addImage = data.getData();
+//            addPhoto.setImageURI(addImage);
+            Bitmap bitmap;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), addImage);
+                addPhoto.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private  String getFileExtention(Uri uri){
+        ContentResolver contentResolver = requireActivity().getContentResolver();
+        MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
+        return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
+    }
+    private void uploadFile(){
+//        final ProgressDialog progressDialog = new ProgressDialog(requireContext());
+//        progressDialog.setTitle("Uploading");
+        if(addImage != null){
+            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
+            +"."+getFileExtention(addImage));
+            fileReference.putFile(addImage).addOnSuccessListener(taskSnapshot -> {
+                name.setErrorEnabled(false);
+                email.setErrorEnabled(false);
+                pass.setErrorEnabled(false);
+                // Create a new user with a first and last name
+                Handler handler = new Handler();
+                handler.postDelayed(() -> progressBar.setProgress(0),5000);
+                Toast.makeText(requireContext(),"Upload Foto Sukses",Toast.LENGTH_LONG).show();
+                Upload upload = new Upload(fileReference.getName());
+//                String uploadID = db.collection("users")
+//                        .document(name.getEditText().getText().toString()).getId();
+                user = new HashMap<>();
+                user.put("Name", Objects.requireNonNull(name.getEditText()).getText().toString());
+                user.put("Email", Objects.requireNonNull(email.getEditText()).getText().toString());
+                user.put("Password", Objects.requireNonNull(pass.getEditText()).getText().toString());
+                user.put("Tipe Akun",tipeAkunYangDipilih);
+                user.put("Foto Profil",upload);
+                db.collection("users")
+                        .document(name.getEditText().getText().toString())
+                        .set(user)
+                        .addOnSuccessListener(e ->
+                                Log.d(TAG, "onComplete: DocumentSnapshot added with ID: "
+                                        +name.getEditText().getText().toString()))
+                        .addOnFailureListener(e ->
+                                Log.w(TAG, "onFailure: Error adding document", e));
+                        }).addOnFailureListener(e -> Toast.makeText(requireContext()
+                                ,"Gagal mengupload: "+e.getMessage(),Toast.LENGTH_LONG).show())
+                        .addOnProgressListener(snapshot -> {
+                                double progres = (100.0 * snapshot.getBytesTransferred())
+                                        / snapshot.getTotalByteCount();
+                                progressBar.setProgress((int)progres);
+            });
+        }
+        else {
+            Toast.makeText(requireContext(),"Gambar belum di pilih",Toast.LENGTH_LONG).show();
+        }
+    }
+
 }
