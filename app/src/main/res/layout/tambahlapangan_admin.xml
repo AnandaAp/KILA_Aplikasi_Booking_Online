@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    >
+
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="TAMBAH LAPANGAN"
+        android:textColor="@color/black"
+
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="206dp">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="0.40"
+
+            android:gravity="center_vertical"
+            android:text="Nama Lapangan "
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailusernameReg"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="0.60"
+
+            android:gravity="center_vertical"
+            android:hint=""
+            tools:ignore="DuplicateIds" />
+    </LinearLayout>
+
+
+    <LinearLayout
+
+
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="0.40"
+
+            android:gravity="center_vertical"
+            android:text="Alamat Lapangan "
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailusernameReg"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="0.60"
+
+            android:gravity="center_vertical"
+            android:hint=""
+            tools:ignore="DuplicateIds" />
+    </LinearLayout>
+
+
+    <LinearLayout
+
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-16dp">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="0.40"
+
+            android:gravity="center_vertical"
+            android:text="Kontak Pengurus "
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailusernameReg"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="0.60"
+
+            android:gravity="center_vertical"
+            android:hint=""
+            tools:ignore="DuplicateIds" />
+    </LinearLayout>
+
+
+    <LinearLayout
+
+
+        android:id="@+id/linearLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="0.40"
+
+            android:gravity="center_vertical"
+            android:text="Foto Lapangan "
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+
+            android:id="@+id/emailusernameReg"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="0.60"
+
+            android:gravity="center_vertical"
+            android:hint=""
+            tools:ignore="DuplicateIds" />
+        <!--            UPLOAD A FILE?????????-->
+        <!--            UPLOAD A FILE?????????-->
+        <!--            UPLOAD A FILE?????????-->
+        <!--            UPLOAD A FILE?????????-->
+        <!--            UPLOAD A FILE?????????-->
+    </LinearLayout>
+
+
+    <LinearLayout
+
+
+        android:id="@+id/linearLayout7"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="-16dp">
+
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="0.40"
+            android:gravity="center_vertical"
+            android:text="Jenis Lapangan "
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/emailusernameReg"
+            android:layout_width="0dp"
+            android:layout_height="61dp"
+            android:layout_weight="0.60"
+            android:gravity="center_vertical"
+            tools:ignore="DuplicateIds" />
+        <!--            DROPDOWN?SPINNER?-->
+        <!--            DROPDOWN?SPINNER?-->
+        <!--            DROPDOWN?SPINNER?-->
+        <!--            DROPDOWN?SPINNER?-->
+        <!--            DROPDOWN?SPINNER?-->
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tambah"
+        tools:layout_editor_absoluteX="159dp"
+        tools:layout_editor_absoluteY="577dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="159dp" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
