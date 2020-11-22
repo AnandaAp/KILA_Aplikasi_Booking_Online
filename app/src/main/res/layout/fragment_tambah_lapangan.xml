@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TambahLapangan">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="TAMBAH LAPANGAN BASKET"
+            android:textColor="@color/black"
+
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.313"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.40"
+
+                android:gravity="center_vertical"
+                android:text="Nama Lapangan "
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/namaLapBasket"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_weight="0.60"
+
+                android:gravity="center_vertical"
+                android:hint=""
+                tools:ignore="DuplicateIds" />
+        </LinearLayout>
+
+
+        <LinearLayout
+
+
+            android:id="@+id/linearLayout4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.40"
+
+                android:gravity="center_vertical"
+                android:text="Alamat Lapangan "
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/alamatLapBasket"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_weight="0.60"
+
+                android:gravity="center_vertical"
+                android:hint=""
+                tools:ignore="DuplicateIds" />
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.40"
+
+                android:gravity="center_vertical"
+                android:text="Kontak Pengurus "
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/kontakLapBasket"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_weight="0.60"
+
+                android:gravity="center_vertical"
+                android:hint=""
+                android:inputType="numberSigned"
+                tools:ignore="DuplicateIds" />
+        </LinearLayout>
+
+
+        <LinearLayout
+
+
+            android:id="@+id/linearLayout6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.40"
+
+                android:gravity="center_vertical"
+                android:text="Harga Lapangan "
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/hargaLapBasket"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_weight="0.60"
+
+                android:gravity="center_vertical"
+                android:hint=""
+                android:inputType="numberSigned"
+                tools:ignore="DuplicateIds" />
+
+        </LinearLayout>
+
+        <LinearLayout
+
+
+            android:id="@+id/linearLayout10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_weight="0.40"
+
+                android:gravity="center_vertical"
+                android:text="Foto Lapangan "
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <EditText
+
+                android:id="@+id/fotoLapBasket"
+                android:layout_width="0dp"
+                android:layout_height="61dp"
+                android:layout_weight="0.60"
+
+                android:gravity="center_vertical"
+                android:hint=""
+                android:inputType="numberSigned"
+                tools:ignore="DuplicateIds" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnTambahBasket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tambah"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/buttonjenis"
+            app:layout_constraintVertical_bias="0.307"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/btnCancelBasket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.43"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnTambahBasket"
+            app:layout_constraintVertical_bias="0.212"
+            tools:ignore="MissingConstraints" />
+
+        <Spinner
+            android:id="@+id/buttonjenis"
+            android:layout_width="203dp"
+            android:layout_height="28dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.783"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
+            app:layout_constraintVertical_bias="0.122"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="143dp"
+            android:layout_height="32dp"
+            android:text="Jenis Lapangan"
+            android:textColor="#000000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/buttonjenis"
+            app:layout_constraintEnd_toStartOf="@+id/buttonjenis"
+            app:layout_constraintHorizontal_bias="0.21"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/buttonjenis"
+            app:layout_constraintVertical_bias="0.0"
+            tools:ignore="MissingConstraints" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
