@@ -21,7 +21,7 @@ public class SessionManagement {
 //        editor.putInt(SESSION_KEY,id).commit();
 //    }
     public void saveSession(User user){
-        User pengguna = new User(user.getEmail(),user.getName(),user.getPassword());
+        User pengguna = new User(user.getEmail(),user.getPassword());
         int id = pengguna.getID();
         editor.putInt(SESSION_KEY,id).commit();
     }

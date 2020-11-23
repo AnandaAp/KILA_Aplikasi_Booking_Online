@@ -1,7 +1,7 @@
 package com.ndaktau.kila;
 
 public class User {
-    int ID = (int) Math.random();
+    int ID;
     String email;
     String password;
 
@@ -13,10 +13,9 @@ public class User {
         setID(ID);
         setPassword(Password);
     }
-    public User(String Email,String name,String password){
+    public User(String Email,String password){
         setEmail(Email);
         setID(ID);
-        setName(name);
         setPassword(password);
     }
 

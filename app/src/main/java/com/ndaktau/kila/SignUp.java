@@ -4,6 +4,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,7 +37,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -181,10 +184,12 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
 
             }
         });
-
     }
     private void navToSignIn(View v){
-        Navigation.findNavController(v).navigate(R.id.NavToSignIn);
+        Intent intent = new Intent(requireActivity(), LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("Coba_intent_extra","percobaan");
+        startActivity(intent);
     }
     private void signUpProcess(){
         btnSignUp.setOnClickListener(this::addToDB);
@@ -203,7 +208,7 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Log.d(TAG, "createUserWithEmail:success");
-                                    Toast.makeText(requireContext(),"Akun berhasil dibuat",Toast.LENGTH_LONG).show();
+//                                    Toast.makeText(requireContext(),"Akun berhasil dibuat",Toast.LENGTH_LONG).show();
                                     uploadFile();
 //                                .add(user)
 //                                .addOnSuccessListener(documentReference -> Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId()))
@@ -220,8 +225,8 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                    Toast.makeText(requireContext(), "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
+//                                    Toast.makeText(requireContext(), "Akun Gagal Dibuat.",
+//                                            Toast.LENGTH_SHORT).show();
 //                            updateUI(null);
                                 }
                             });
@@ -302,6 +307,7 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
                 e.printStackTrace();
             }
         }
+
     }
 
     private  String getFileExtention(Uri uri){
@@ -322,7 +328,7 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
                 // Create a new user with a first and last name
                 Handler handler = new Handler();
                 handler.postDelayed(() -> progressBar.setProgress(0),5000);
-                Toast.makeText(requireContext(),"Upload Foto Sukses",Toast.LENGTH_LONG).show();
+//                Toast.makeText(requireContext(),"Upload Foto Sukses",Toast.LENGTH_LONG).show();
                 Upload upload = new Upload(fileReference.getName());
 //                String uploadID = db.collection("users")
 //                        .document(name.getEditText().getText().toString()).getId();
@@ -336,12 +342,13 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
                         .document(email.getEditText().getText().toString())
                         .set(user)
                         .addOnSuccessListener(e ->
-                                Log.d(TAG, "onComplete: DocumentSnapshot added with ID: "
-                                        +name.getEditText().getText().toString()))
+                                Toast.makeText(requireContext(),"Akun berhasil dibuat",Toast.LENGTH_LONG).show())
                         .addOnFailureListener(e ->
                                 Log.w(TAG, "onFailure: Error adding document", e));
-                        }).addOnFailureListener(e -> Toast.makeText(requireContext()
-                                ,"Gagal mengupload: "+e.getMessage(),Toast.LENGTH_LONG).show())
+                        }).addOnFailureListener(e -> /*Toast.makeText(requireContext()
+                                ,"Gagal mengupload: "+e.getMessage(),Toast.LENGTH_LONG).show()*/
+                                Toast.makeText(requireContext(), "Akun Gagal Dibuat.",
+                                        Toast.LENGTH_SHORT).show())
                         .addOnProgressListener(snapshot -> {
                                 double progres = (100.0 * snapshot.getBytesTransferred())
                                         / snapshot.getTotalByteCount();
@@ -349,8 +356,51 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
             });
         }
         else {
-            Toast.makeText(requireContext(),"Gambar belum di pilih",Toast.LENGTH_LONG).show();
+            addImage = Uri.parse("android.resource://com.ndaktau.kila/drawable/user");
+            //                InputStream stream = requireActivity().getContentResolver().openInputStream(addImage);
+//                Bitmap bitmap,bit;
+            //                    bitmap = MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), addImage);
+//                bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.icon);
+//                bit = BitmapFactory.decodeStream(stream);
+//                addPhoto.setImageBitmap(bit);
+            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
+                    +".png");
+            fileReference.putFile(addImage).addOnSuccessListener(taskSnapshot -> {
+                name.setErrorEnabled(false);
+                email.setErrorEnabled(false);
+                pass.setErrorEnabled(false);
+                // Create a new user with a first and last name
+                Handler handler = new Handler();
+                handler.postDelayed(() -> progressBar.setProgress(0),5000);
+                Upload upload = new Upload(fileReference.getName());
+//                String uploadID = db.collection("users")
+//                        .document(name.getEditText().getText().toString()).getId();
+                user = new HashMap<>();
+                user.put("Name", Objects.requireNonNull(name.getEditText()).getText().toString());
+                user.put("Email", Objects.requireNonNull(email.getEditText()).getText().toString());
+                user.put("Password", Objects.requireNonNull(pass.getEditText()).getText().toString());
+                user.put("Tipe Akun",tipeAkunYangDipilih);
+                user.put("Foto Profil",upload);
+                db.collection("users")
+                        .document(email.getEditText().getText().toString())
+                        .set(user)
+                        .addOnSuccessListener(e ->
+                                Toast.makeText(requireContext(),"Akun berhasil dibuat",Toast.LENGTH_LONG).show())
+                        .addOnFailureListener(e ->
+                                Log.w(TAG, "onFailure: Error adding document", e));
+                         }).addOnFailureListener(e -> /*Toast.makeText(requireContext()
+                                ,"Gagal mengupload: "+e.getMessage(),Toast.LENGTH_LONG).show()*/
+                        Toast.makeText(requireContext(), "Akun Gagal Dibuat.",
+                                Toast.LENGTH_SHORT).show())
+                        .addOnProgressListener(snapshot -> {
+                            double progres = (100.0 * snapshot.getBytesTransferred())
+                                    / snapshot.getTotalByteCount();
+                            progressBar.setProgress((int)progres);
+                });
         }
+//        else {
+//            Toast.makeText(requireContext(),"Gambar belum di pilih",Toast.LENGTH_LONG).show();
+//        }
     }
 
 }
