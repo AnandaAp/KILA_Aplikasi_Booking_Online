@@ -333,7 +333,7 @@ public class SignUp extends Fragment implements AdapterView.OnItemSelectedListen
                 user.put("Tipe Akun",tipeAkunYangDipilih);
                 user.put("Foto Profil",upload);
                 db.collection("users")
-                        .document(name.getEditText().getText().toString())
+                        .document(email.getEditText().getText().toString())
                         .set(user)
                         .addOnSuccessListener(e ->
                                 Log.d(TAG, "onComplete: DocumentSnapshot added with ID: "

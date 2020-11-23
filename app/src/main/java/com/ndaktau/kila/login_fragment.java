@@ -1,5 +1,6 @@
 package com.ndaktau.kila;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -69,8 +70,12 @@ public class login_fragment extends Fragment {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                User user1 = new User(user.getEmail(),user.getDisplayName(),password_value);
                                 Toast.makeText(requireActivity(),"Login "+user.getEmail()
                                         ,Toast.LENGTH_LONG).show();
+                                SessionManagement sessionManagement = new SessionManagement(requireActivity());
+                                sessionManagement.saveSession(user1);
+                                moveToDashboard();
 //                                updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -86,5 +91,11 @@ public class login_fragment extends Fragment {
 
     private void NavToSignUp(){
         signUp.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.NavToSignUp));
+    }
+
+    public void moveToDashboard(){
+        Intent intent = new Intent(requireActivity(), Dashboard.class);
+        startActivity(intent);
+        requireActivity().finish();
     }
 }
