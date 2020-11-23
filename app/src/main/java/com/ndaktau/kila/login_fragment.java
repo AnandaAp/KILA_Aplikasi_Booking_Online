@@ -1,5 +1,6 @@
 package com.ndaktau.kila;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,8 @@ import androidx.navigation.Navigation;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import static android.content.ContentValues.TAG;
 
 public class login_fragment extends Fragment {
     private final String TAG = "com.ndaktau.kila";
@@ -69,8 +72,12 @@ public class login_fragment extends Fragment {
                                 // Sign in success, update UI with the signed-in user's information
                                 Log.d(TAG, "signInWithEmail:success");
                                 FirebaseUser user = mAuth.getCurrentUser();
+                                User user1 = new User(user.getEmail(),password_value);
                                 Toast.makeText(requireActivity(),"Login "+user.getEmail()
                                         ,Toast.LENGTH_LONG).show();
+                                SessionManagement sessionManagement = new SessionManagement(requireActivity());
+                                sessionManagement.saveSession(user1);
+                                moveToDashboard();
 //                                updateUI(user);
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -86,5 +93,35 @@ public class login_fragment extends Fragment {
 
     private void NavToSignUp(){
         signUp.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.NavToSignUp));
+    }
+
+    public void moveToDashboard(){
+        Intent intent = new Intent(requireActivity(), Dashboard.class);
+        startActivity(intent);
+        requireActivity().finish();
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.i(TAG, "onStart: cek session");
+        checkSession();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+    }
+
+    private void checkSession(){
+        SessionManagement sessionManagement = new SessionManagement(requireContext());
+        int isUserLoggedIn = sessionManagement.getSession();
+        if (isUserLoggedIn != -1){
+            Log.i(TAG, "checkSession: user sudah login");
+            moveToDashboard();
+        }
+        else{
+            Log.i(TAG, "checkSession: user belum login");
+        }
     }
 }

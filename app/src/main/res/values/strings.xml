@@ -19,4 +19,11 @@
         <item>Pengguna</item>
         <item>Administrator</item>
     </string-array>
+    <string-array name="jenislapangan">
+        <item>Basket</item>
+        <item>Futsal</item>
+        <item>Badminton</item>
+    </string-array>
+
+
 </resources>
