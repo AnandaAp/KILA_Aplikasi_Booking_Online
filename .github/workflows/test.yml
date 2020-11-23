@@ -21,7 +21,7 @@ jobs:
       - name: Decode google-services.json
         env:
           FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
-        run: echo $FIREBASE_CONFIG > app/google-services.json
+        run: echo $FIREBASE_CONFIG > KILA_Aplikasi_Booking_Online/app/google-services.json
 
       # Step 3: Check the code with Android linter
       - name: Run Android Linter
