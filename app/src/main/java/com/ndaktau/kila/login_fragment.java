@@ -96,7 +96,7 @@ public class login_fragment extends Fragment {
     }
 
     public void moveToDashboard(){
-        Intent intent = new Intent(requireActivity(), Dashboard.class);
+        Intent intent = new Intent(requireActivity(),fragmentuser.class);
         startActivity(intent);
         requireActivity().finish();
     }

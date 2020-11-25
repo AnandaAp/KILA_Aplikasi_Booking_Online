@@ -11,12 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KILA"
         android:windowSoftInputMode="stateHidden|adjustPan|adjustResize">
-        <activity android:name=".Dashboard"
-            android:parentActivityName=".LoginActivity">
-        </activity>
+        <activity
+            android:name=".fragmentuser"
+            android:parentActivityName=".LoginActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

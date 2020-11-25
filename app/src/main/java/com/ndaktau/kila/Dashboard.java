@@ -1,13 +1,11 @@
 package com.ndaktau.kila;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -16,10 +14,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.Objects;
 
 public class Dashboard extends AppCompatActivity {
     private static final String TAG = "Dashboard";
@@ -56,7 +50,7 @@ public class Dashboard extends AppCompatActivity {
                             moveToAdminDashboard();
                         }
                         else if(document.get("Tipe Akun").toString().equals("Pengguna")){
-                            moveToPenggunaDashboard();
+                            //moveToPenggunaDashboard();
                         }
                     } else {
                         Log.d(TAG, "No such document");
@@ -75,12 +69,12 @@ public class Dashboard extends AppCompatActivity {
         transaction.replace(R.id.fragment_container, fragment);
         transaction.commit();
     }
-    private void moveToPenggunaDashboard(){
-//        Intent i = new Intent(Dashboard.this,dashboard_admin.class);
-//        startActivity(i);
-        HomeFragment fragment = new HomeFragment();
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, fragment);
-        transaction.commit();
-    }
+//    private void moveToPenggunaDashboard(){
+////        Intent i = new Intent(Dashboard.this,dashboard_admin.class);
+////        startActivity(i);
+//        fragmentuser fragment = new fragmentuser();
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.fragment_container,fragment);
+//        transaction.commit();
+//    }
 }
