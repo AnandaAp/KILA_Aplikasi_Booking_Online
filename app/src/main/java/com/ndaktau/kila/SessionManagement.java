@@ -3,8 +3,6 @@ package com.ndaktau.kila;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.google.firebase.auth.FirebaseUser;
-
 public class SessionManagement {
     private final SharedPreferences sharedPreferences;
     private final SharedPreferences.Editor editor;

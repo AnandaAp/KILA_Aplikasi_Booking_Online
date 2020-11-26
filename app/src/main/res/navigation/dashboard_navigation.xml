@@ -3,28 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_navigation"
-    app:startDestination="@id/dashboard">
-
-    <activity
-        android:id="@+id/dashboard"
-        android:name="com.ndaktau.kila.Dashboard"
-        android:label="activity_dashboard"
-        tools:layout="@layout/activity_dashboard" />
+    app:startDestination="@id/fragmentDashboardAdmin">
     <fragment
         android:id="@+id/tambahLapangan"
         android:name="com.ndaktau.kila.TambahLapangan"
         android:label="fragment_tambah_lapangan"
-        tools:layout="@layout/fragment_tambah_lapangan" />
+        tools:layout="@layout/fragment_tambah_lapangan" >
+        <action
+            android:id="@+id/action_tambahLapangan_to_fragmentDashboardAdmin"
+            app:destination="@id/fragmentDashboardAdmin"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
+    </fragment>
     <fragment
-        android:id="@+id/dashboard_admin"
-        android:name="com.ndaktau.kila.dashboard_admin"
+        android:id="@+id/fragmentDashboardAdmin"
+        android:name="com.ndaktau.kila.FragmentDashboardAdmin"
         android:label="fragment_dashboard_admin"
         tools:layout="@layout/fragment_dashboard_admin" >
         <action
-            android:id="@+id/action_dashboard_admin_to_dashboard"
-            app:destination="@id/dashboard" />
-        <action
-            android:id="@+id/action_dashboard_admin_to_tambahLapangan"
-            app:destination="@id/tambahLapangan" />
+            android:id="@+id/action_fragmentDashboardAdmin_to_tambahLapangan"
+            app:destination="@id/tambahLapangan"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
 </navigation>

@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".TambahLapangan">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
@@ -204,8 +202,8 @@
 
 
             android:id="@+id/linearLayout10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="181dp"
+            android:layout_height="32dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:paddingLeft="5dp"
@@ -220,8 +218,8 @@
 
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="32dp"
+                android:layout_width="154dp"
+                android:layout_height="43dp"
                 android:layout_weight="0.40"
 
                 android:gravity="center_vertical"
@@ -229,18 +227,6 @@
                 android:textColor="#000000"
                 android:textSize="18dp"
                 android:textStyle="bold" />
-
-            <EditText
-
-                android:id="@+id/fotoLapBasket"
-                android:layout_width="0dp"
-                android:layout_height="61dp"
-                android:layout_weight="0.60"
-
-                android:gravity="center_vertical"
-                android:hint=""
-                android:inputType="numberSigned"
-                tools:ignore="DuplicateIds" />
 
         </LinearLayout>
 
@@ -276,10 +262,10 @@
             android:layout_height="28dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.783"
+            app:layout_constraintHorizontal_bias="0.807"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout10"
-            app:layout_constraintVertical_bias="0.122"
+            app:layout_constraintVertical_bias="0.105"
             tools:ignore="MissingConstraints" />
 
         <TextView
@@ -290,13 +276,28 @@
             android:textColor="#000000"
             android:textSize="18dp"
             android:textStyle="bold"
+
             app:layout_constraintBottom_toBottomOf="@+id/buttonjenis"
             app:layout_constraintEnd_toStartOf="@+id/buttonjenis"
-            app:layout_constraintHorizontal_bias="0.21"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/buttonjenis"
             app:layout_constraintVertical_bias="0.0"
             tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/pilihfoto"
+            android:layout_width="118dp"
+            android:layout_height="36dp"
+            android:background="@color/white"
+            android:text="Choose file"
+            android:textSize="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.097"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout10"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout6"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
