@@ -1,4 +1,4 @@
 package com.ndaktau.kila;
 
-public class basket {
+public class Badminton {
 }

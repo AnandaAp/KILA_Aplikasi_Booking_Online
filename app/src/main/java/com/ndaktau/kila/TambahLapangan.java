@@ -141,7 +141,6 @@ public class TambahLapangan extends Fragment {
         });
 
         return view;
-//        return inflater.inflate(R.layout.fragment_tambah_lapangan, container, false);
     }
     private void init(View view) {
         namalapanganbskt = view.findViewById(R.id.namaLapBasket);
@@ -154,7 +153,7 @@ public class TambahLapangan extends Fragment {
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(requireContext()
                 , R.array.jenislapangan, android.R.layout.simple_list_item_1);
         jenisLapangan.setAdapter(adapter);
-        jenisLapangan.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) this);
+//        jenisLapangan.setOnItemSelectedListener();
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
     }
 

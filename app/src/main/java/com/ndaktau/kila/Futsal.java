@@ -1,4 +1,4 @@
 package com.ndaktau.kila;
 
-public class sepakbola {
+public class Futsal {
 }

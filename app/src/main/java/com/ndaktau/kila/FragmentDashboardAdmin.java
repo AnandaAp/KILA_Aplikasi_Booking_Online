@@ -2,32 +2,18 @@ package com.ndaktau.kila;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.google.firebase.auth.FirebaseAuth;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.navigation.Navigation;
 
-import static android.content.ContentValues.TAG;
 
-
-public class dashboard_admin extends Fragment {
-    private Button logOut;
-
-    public FirebaseAuth getmAuth() {
-        return mAuth;
-    }
-
-    public void setmAuth() {
-        this.mAuth = FirebaseAuth.getInstance();
-    }
-
-    private FirebaseAuth mAuth;
+public class FragmentDashboardAdmin extends Fragment {
+    private Button logOut,tmbhLapangan;
 
     public Button getLogOut() {
         return logOut;
@@ -48,16 +34,20 @@ public class dashboard_admin extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_dashboard_admin, container, false);
-        setmAuth();
-        SessionManagement sessionManagement = new SessionManagement(requireActivity());
         setLogOut(view);
-        getLogOut().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logout();
-            }
-        });
+        setTmbhLapangan(view);
+        getLogOut().setOnClickListener(v -> logout());
+        getTmbhLapangan().setOnClickListener(v -> moveToTambahLapangan(v));
         return view;
+    }
+
+    private void moveToTambahLapangan(View view){
+//        TambahLapangan tambahLapangan = new TambahLapangan();
+//        FragmentTransaction fragmentTransaction = requireActivity().getSupportFragmentManager()
+//                                                    .beginTransaction();
+//        fragmentTransaction.replace(R.id.fragment_container,tambahLapangan);
+//        fragmentTransaction.commit();
+        Navigation.findNavController(view).navigate(R.id.tambahLapangan);
     }
     private void logout(){
         SessionManagement sessionManagement = new SessionManagement(requireContext());
@@ -70,5 +60,13 @@ public class dashboard_admin extends Fragment {
         intent.putExtra("Coba_intent_extra","percobaan");
         startActivity(intent);
         requireActivity().finish();
+    }
+
+    public Button getTmbhLapangan() {
+        return tmbhLapangan;
+    }
+
+    public void setTmbhLapangan(View view) {
+        this.tmbhLapangan = view.findViewById(R.id.btnTambahLap);
     }
 }

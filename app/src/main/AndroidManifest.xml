@@ -12,7 +12,10 @@
         android:theme="@style/Theme.KILA"
         android:windowSoftInputMode="stateHidden|adjustPan|adjustResize">
         <activity
-            android:name=".fragmentuser"
+            android:name=".DashboardUser"
+            android:parentActivityName=".LoginActivity"></activity>
+        <activity
+            android:name=".DashboardAdmin"
             android:parentActivityName=".LoginActivity"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
