@@ -9,8 +9,13 @@ public class DataLapangan {
     private String alamatlap;
     private String kontaklap;
     private String hargalap;
+
+    public String getJenlapangan() {
+        return jenlapangan;
+    }
+
     private String jenlapangan;
-    private Map<String, Object> upfoto;
+   private Map<String, Object> upfoto;
 
     public DataLapangan (String namalap, String alamatlap, String kontaklap, String hargalap, String jenlapangan,
                          Map fotoo){
@@ -24,6 +29,19 @@ public class DataLapangan {
 
 
     }
+
+    public DataLapangan (String namalap, String alamatlap, String kontaklap, String hargalap, String jenlapangan
+                         ){
+        upfoto = new HashMap<>();
+        this.namalap = namalap;
+        this.alamatlap = alamatlap;
+        this.kontaklap = kontaklap;
+        this.hargalap = hargalap;
+        this.jenlapangan = jenlapangan;
+
+
+    }
+
 
     public DataLapangan(){
 

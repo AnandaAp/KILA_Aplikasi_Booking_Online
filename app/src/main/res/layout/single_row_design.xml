@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-   android:id="@+id/cardview"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardview"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,70 +9,108 @@
     android:elevation="4dp"
     app:cardUseCompatPadding="true"
     >
-    <RelativeLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="16dp">
+
+
         <ImageView
             android:id="@+id/img1"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="97dp"
+            android:layout_height="84dp"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="8dp"
-            android:src="@mipmap/ic_launcher"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="23dp" />
-
+            android:layout_alignParentTop="true"
+            android:src="@mipmap/ic_launcher"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.072" />
 
         <TextView
             android:id="@+id/namalapangan"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="32dp"
+            android:layout_toEndOf="@+id/img1"
             android:layout_toRightOf="@id/img1"
             android:gravity="center_vertical"
             android:text="Nama Lapangan"
             android:textColor="#000"
             android:textSize="25dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.804"
+            app:layout_constraintStart_toEndOf="@+id/img1"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/harga"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/namalapangan"
-            android:layout_marginLeft="19dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="12dp"
             android:layout_toRightOf="@+id/img1"
             android:gravity="center_vertical"
             android:text="hharga lapangan/jam"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/namalapangan"
+            app:layout_constraintStart_toStartOf="@+id/namalapangan"
+            app:layout_constraintTop_toBottomOf="@+id/namalapangan" />
+
         <TextView
             android:id="@+id/alamat"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/harga"
-            android:layout_marginLeft="19dp"
-            android:layout_marginTop="12dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="16dp"
             android:layout_toRightOf="@+id/img1"
             android:gravity="center_vertical"
             android:text="alamat"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/harga"
+            app:layout_constraintStart_toStartOf="@+id/harga"
+            app:layout_constraintTop_toBottomOf="@+id/harga" />
+
         <TextView
             android:id="@+id/kontak"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/alamat"
-            android:layout_marginLeft="19dp"
+            android:layout_alignParentEnd="true"
             android:layout_marginTop="12dp"
             android:layout_toRightOf="@+id/img1"
             android:gravity="center_vertical"
             android:text="kontak"
-            android:textSize="15dp" />
+            android:textSize="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/alamat"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/alamat"
+            app:layout_constraintTop_toBottomOf="@+id/alamat" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="83dp"
+            android:layout_height="38dp"
+            android:layout_below="@+id/kontak"
+            android:layout_alignParentEnd="true"
+            android:text="Button"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.95"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kontak"
+            app:layout_constraintVertical_bias="0.058" />
 
 
-
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import static android.graphics.text.LineBreaker.JUSTIFICATION_MODE_INTER_WORD;
 
 public class LapanganAdapter extends RecyclerView.Adapter<LapanganAdapter.kategoriviewholder>{
-    private String[] jenislapangan;
+
     private String[] nama;
     private String[] harga;
     private String[] kontak;
@@ -21,8 +21,8 @@ public class LapanganAdapter extends RecyclerView.Adapter<LapanganAdapter.katego
 
     private Context context;
 
-    public LapanganAdapter(String[] jenislapangan, String[] nama, String[] harga, String[] kontak,String[] alamat, Context context) {
-        setJenislapangan(jenislapangan);
+    public LapanganAdapter( String[] nama, String[] harga, String[] kontak,String[] alamat, Context context) {
+
         setHarga(harga);
         setKontak(kontak);
         setNama(nama);
@@ -32,9 +32,6 @@ public class LapanganAdapter extends RecyclerView.Adapter<LapanganAdapter.katego
 
     }
 
-    public String[] getJenislapangan() {
-        return jenislapangan;
-    }
 
     public String[] getAlamat() {
         return alamat;
@@ -44,9 +41,6 @@ public class LapanganAdapter extends RecyclerView.Adapter<LapanganAdapter.katego
         this.alamat = alamat;
     }
 
-    public void setJenislapangan(String[] jenislapangan) {
-        this.jenislapangan = jenislapangan;
-    }
 
     public String[] getNama() {
         return nama;

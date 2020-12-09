@@ -281,7 +281,7 @@ public class TambahLapangan extends Fragment implements AdapterView.OnItemSelect
 //                hargalapanganbskt.getText().toString(), pilihanjenis, upfoto);
 
 
-        db.collection("DaftarLapangan").document(namalapanganbskt.getText().toString()).set(dataadmin)
+        db.collection(pilihanjenis).document(namalapanganbskt.getText().toString()).set(dataadmin)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
