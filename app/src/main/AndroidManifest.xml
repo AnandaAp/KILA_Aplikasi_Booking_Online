@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KILA"
         android:windowSoftInputMode="stateHidden|adjustPan|adjustResize">
-        <activity android:name=".DetailLapangan"></activity>
+        <activity android:name=".Pesan">
+
+        </activity>
+        <activity android:name=".DetailLapangan" />
         <activity
             android:name=".DashboardUser"
             android:parentActivityName=".LoginActivity" />

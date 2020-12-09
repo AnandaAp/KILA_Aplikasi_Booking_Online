@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -20,6 +22,9 @@ import java.util.ArrayList;
 import static android.content.ContentValues.TAG;
 
 public class DetailLapangan extends AppCompatActivity {
+
+    Button Pesan;
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private RecyclerView mFirestoreList;
     private FirebaseFirestore firebaseFirestore;
@@ -40,7 +45,6 @@ public class DetailLapangan extends AppCompatActivity {
         mFirestoreList = findViewById(R.id.recyclerlapangan);
         firebaseFirestore = firebaseFirestore.getInstance();
         getAllDocument();
-
 
     }
 

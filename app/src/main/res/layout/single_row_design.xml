@@ -18,18 +18,18 @@
 
         <ImageView
             android:id="@+id/img1"
-            android:layout_width="97dp"
-            android:layout_height="84dp"
+            android:layout_width="127dp"
+            android:layout_height="127dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:src="@mipmap/ic_launcher"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.063"
+            app:layout_constraintHorizontal_bias="0.056"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.072" />
+            app:layout_constraintVertical_bias="0.415" />
 
         <TextView
             android:id="@+id/namalapangan"
@@ -57,12 +57,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/namalapangan"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:layout_toRightOf="@+id/img1"
             android:gravity="center_vertical"
-            android:text="hharga lapangan/jam"
+            android:text="harga lapangan/jam"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="@+id/namalapangan"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/namalapangan"
             app:layout_constraintTop_toBottomOf="@+id/namalapangan" />
 
@@ -78,6 +79,7 @@
             android:text="alamat"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="@+id/harga"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/harga"
             app:layout_constraintTop_toBottomOf="@+id/harga" />
 
@@ -98,18 +100,18 @@
             app:layout_constraintTop_toBottomOf="@+id/alamat" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/pesan"
             android:layout_width="83dp"
             android:layout_height="38dp"
             android:layout_below="@+id/kontak"
             android:layout_alignParentEnd="true"
-            android:text="Button"
+            android:text="Pesan"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.95"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/kontak"
-            app:layout_constraintVertical_bias="0.058" />
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
