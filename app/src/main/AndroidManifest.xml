@@ -11,8 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KILA"
         android:windowSoftInputMode="stateHidden|adjustPan|adjustResize">
-        <activity android:name=".ListLapangan"></activity>
-        <activity android:name=".Pesan"></activity>
+        <activity android:name=".UpdateData"></activity>
+        <activity android:name=".ListLapangan" />
+        <activity android:name=".Pesan" />
         <activity android:name=".DetailLapangan" />
         <activity
             android:name=".DashboardUser"

@@ -2,7 +2,6 @@ package com.ndaktau.kila;
 
 public class User {
     int ID;
-
     String email;
     String password;
     String name;

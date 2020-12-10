@@ -11,85 +11,98 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="122dp"
+            android:layout_height="0dp"
+            android:layout_alignEnd="@+id/img1"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:text="ADMIN"
+            android:textColor="#000"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/img1"
+            app:layout_constraintEnd_toStartOf="@+id/img1"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img1"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/img1"
+            android:layout_width="60dp"
+            android:layout_height="49dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/gambar_admin"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.023" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="175dp"
-            android:padding="10dp"
-            tools:ignore="MissingConstraints">
-
-
-            <TextView
-                android:layout_width="122dp"
-                android:layout_height="57dp"
-                android:layout_alignEnd="@+id/img1"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="122dp"
-                android:layout_marginTop="63dp"
-                android:layout_marginEnd="139dp"
-                android:layout_marginBottom="45dp"
-                android:gravity="center_vertical"
-                android:text="ADMIN"
-                android:textColor="#000"
-                android:textSize="35dp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/img1"
-                android:layout_width="141dp"
-                android:layout_height="120dp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginStart="281dp"
-                android:layout_marginLeft="281dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="26dp"
-                android:src="@drawable/gambar_admin" />
-
-        </RelativeLayout>
-
-        <Button
-            android:id="@+id/btnTambahLap"
-            android:layout_width="267dp"
-            android:layout_height="50dp"
-            android:gravity="center"
-            android:text="Tambah Lapangan"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="120dp"
+            android:background="@drawable/rounded_edit_text"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/relativeLayout"
-            app:layout_constraintVertical_bias="0.185"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/list_lapangan"
-            android:layout_width="267dp"
-            android:layout_height="50dp"
-            android:text="List Lapangan"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnTambahLap"
-            app:layout_constraintVertical_bias="0.146"
-            tools:ignore="MissingConstraints" />
+            <Button
+                android:id="@+id/btnTambahLap"
+                android:layout_width="267dp"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="Tambah Lapangan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.396"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/list_lapangan"
+                android:layout_width="267dp"
+                android:layout_height="50dp"
+                android:text="List Lapangan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btnTambahLap"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/btnTambahLap"
+                app:layout_constraintTop_toBottomOf="@+id/btnTambahLap"
+                app:layout_constraintVertical_bias="0.219"
+                tools:ignore="MissingConstraints" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <Button
             android:id="@+id/logOut"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:text="log out"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/list_lapangan"
-            app:layout_constraintVertical_bias="0.152" />
-
+            app:layout_constraintBottom_toBottomOf="@+id/textView11"
+            app:layout_constraintEnd_toStartOf="@+id/textView11"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@+id/textView11"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </FrameLayout>

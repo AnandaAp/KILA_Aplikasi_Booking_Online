@@ -7,18 +7,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class Pesan extends AppCompatActivity {
-
+    private ImageView btnBack;
     Button Pesanwa;
     EditText Namapemesan,Namalapangan,Jammulai,Jamselesai,Lamapemesan,Tanggal;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pesan);
-
+        btnBack = findViewById(R.id.btnBack);
         Namapemesan=findViewById(R.id.namapemesan);
-        Namalapangan=findViewById(R.id.namalapangan);
+        Namalapangan=findViewById(R.id.nameLap);
         Jammulai=findViewById(R.id.jammulai);
         Jamselesai=findViewById(R.id.jamselesai);
         Lamapemesan=findViewById(R.id.lamapemesan);
@@ -45,6 +46,9 @@ public class Pesan extends AppCompatActivity {
                 startActivity(kirimWA);
             }
         });
-
+        btnBack.setOnClickListener(v ->{
+            Intent intent = new Intent(Pesan.this,DetailLapangan.class);
+            startActivity(intent);
+        });
     }
 }

@@ -11,17 +11,29 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
+
+import static android.content.ContentValues.TAG;
 
 public class LoginFragment extends Fragment {
     private final String TAG = "com.ndaktau.kila";
@@ -31,7 +43,21 @@ public class LoginFragment extends Fragment {
     protected String email_value,password_value;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db ;
+    private DataLapangan dl;
+    private static int ID;
 
+    public static int getID() {
+        return ID;
+    }
+
+    public static void setID(int ID) {
+        LoginFragment.ID = ID;
+    }
+    public static void addID(int ID){
+        LoginFragment.ID += ID;
+    }
+
+    private final ArrayList<DataLapangan> datalapangan = new ArrayList<>();
     public FirebaseFirestore getDb() {
         return db;
     }
@@ -117,6 +143,22 @@ public class LoginFragment extends Fragment {
     public void onStart() {
         super.onStart();
         Log.i(TAG, "onStart: cek session");
+        db.collection("DaftarLapangan")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                setID(Integer.parseInt(document.get("ID").toString()));
+                            }
+                        } else {
+                            Log.d(TAG, "Error getting documents: ", task.getException());
+                            setID(0);
+                        }
+                    }
+                });
+        Log.i(TAG, "onComplete: id = "+getID());
         checkSession();
     }
 
@@ -172,4 +214,6 @@ public class LoginFragment extends Fragment {
         startActivity(intent);
         requireActivity().finish();
     }
+
+
 }

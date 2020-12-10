@@ -13,22 +13,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -60,7 +54,7 @@ public class TambahLapangan extends Fragment implements AdapterView.OnItemSelect
     private Button btnupfoto;
     private Spinner jenisLapangan;
     private String pilihanjenis;
-    public Uri imguri;
+    private Uri imguri;
     private static final int PICK_IMAGE = 100;
     private Map<String, Object> upfoto, dataadmin;
 
@@ -76,25 +70,7 @@ public class TambahLapangan extends Fragment implements AdapterView.OnItemSelect
         this.buttoncancelbasket = view.findViewById(R.id.btnCancelBasket);
     }
 
-//    private EditText namalapanganfutsal;
-//    private EditText alamatlapanganfutsal;
-//    private EditText kontaklapanganfutsal;
-//    private EditText hargalapanganfutsal;
-//    private Button buttontambahfutsal;
-//    private Button buttoncancelfutsal;
-//
-//
-//    private EditText namalapanganbadminton;
-//    private EditText alamatlapanganbadminton;
-//    private EditText kontaklapanganbadminton;
-//    private EditText hargalapanganbadminton;
-//    private Button buttontambahbadminton;
-//    private Button buttoncancelbadminton;
-
     private FirebaseFirestore firebaseFirestoreDb;
-//    private Button fotoLap;
-//    private Button jenisLap;
-
 
 
 
@@ -163,6 +139,8 @@ public class TambahLapangan extends Fragment implements AdapterView.OnItemSelect
                         && !kontaklapanganbskt.getText().toString().isEmpty() && !hargalapanganbskt.getText().toString().isEmpty()
                         && !pilihanjenis.isEmpty()) {
                     uploadFile();
+                    LoginActivity.setAddToDB(1);
+                    LoginFragment.addID(1);
                 } else {
                     //jika kosong
                     Log.i(TAG, "onClick: "+namalapanganbskt.getText().toString());
@@ -215,8 +193,6 @@ public class TambahLapangan extends Fragment implements AdapterView.OnItemSelect
                 Upload upload = new Upload(fileReference.getName());
                 upfoto.put("Foto Lapangan", upload);
                 tambahLapBasket();
-
-
             });
         }
     }
@@ -268,6 +244,7 @@ public class TambahLapangan extends Fragment implements AdapterView.OnItemSelect
 
 
     private void tambahLapBasket () {
+        dataadmin.put("ID",""+LoginFragment.getID());
         dataadmin.put("Nama lapangan", Objects.requireNonNull(namalapanganbskt.getText().toString()));
         dataadmin.put("Alamat lapangan", Objects.requireNonNull(alamatlapanganbskt.getText().toString()));
         dataadmin.put("Harga lapangan(perjam)", Objects.requireNonNull(Integer.parseInt(hargalapanganbskt.getText().toString())));
@@ -275,13 +252,7 @@ public class TambahLapangan extends Fragment implements AdapterView.OnItemSelect
         dataadmin.put("Foto Profil",upfoto);
         dataadmin.put("Jenis lapangan", pilihanjenis);
 
-//        DataLapangan dataLapangan = new DataLapangan(namalapanganbskt.getText().toString(),
-//                alamatlapanganbskt.getText().toString(),
-//                kontaklapanganbskt.getText().toString(),
-//                hargalapanganbskt.getText().toString(), pilihanjenis, upfoto);
-
-
-        db.collection(pilihanjenis).document(namalapanganbskt.getText().toString()).set(dataadmin)
+        db.collection("DaftarLapangan").document(String.valueOf(LoginFragment.getID())).set(dataadmin)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
