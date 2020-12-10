@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/rounded_edit_text"
+    android:layout_height="match_parent"
+    tools:context=".Pesan">
+
+    <EditText
+        android:id="@+id/tanggal"
+        android:textColorHint="@color/putihPudar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="DD-MM-YYY"
+        android:inputType="date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lamapemesan"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/lamapemesan"
+        app:layout_constraintTop_toBottomOf="@+id/lamapemesan"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/jammulai"
+        android:textColorHint="@color/putihPudar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Dari Jam : 00:00"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/nameLap"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nameLap"
+        app:layout_constraintTop_toBottomOf="@+id/nameLap"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/jamselesai"
+        android:textColorHint="@color/putihPudar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Sampai jam : 00:00"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/jammulai"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/jammulai"
+        app:layout_constraintTop_toBottomOf="@+id/jammulai"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/namapemesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:ems="10"
+        android:hint="Nama Anda"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/putihPudar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:layout_constraintVertical_bias="0.144" />
+
+    <EditText
+        android:id="@+id/nameLap"
+        android:textColorHint="@color/putihPudar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nama Lapangan"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/namapemesan"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/namapemesan"
+        app:layout_constraintTop_toBottomOf="@+id/namapemesan"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <EditText
+        android:id="@+id/lamapemesan"
+        android:layout_width="0dp"
+        android:textColorHint="@color/putihPudar"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Lama Bermain"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/jamselesai"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/jamselesai"
+        app:layout_constraintTop_toBottomOf="@+id/jamselesai"
+        app:layout_constraintVertical_bias="0.05" />
+
+    <Button
+        android:id="@+id/pesanwa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="confirm"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tanggal"
+        app:layout_constraintStart_toStartOf="@+id/tanggal"
+        app:layout_constraintTop_toBottomOf="@+id/tanggal"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="24sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FORM BOOKING LAPANGAN"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView8"
+        app:layout_constraintEnd_toStartOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.093"
+        app:srcCompat="@drawable/ic_back" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@drawable/rounded_edit_text"
+    android:layout_height="match_parent"
+    tools:context=".UpdateData">
+
+
+
+
+        <EditText
+            android:id="@+id/namaLapanganUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:ems="10"
+            android:hint="nama lapangan"
+            android:inputType="textPersonName"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/JudulActivity"
+            app:layout_constraintVertical_bias="0.131" />
+
+        <EditText
+            android:id="@+id/alamatUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Alamat"
+            android:inputType="textPersonName"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/namaLapanganUpdate"
+            app:layout_constraintStart_toStartOf="@+id/namaLapanganUpdate"
+            app:layout_constraintTop_toBottomOf="@+id/namaLapanganUpdate"
+            app:layout_constraintVertical_bias="0.060000002" />
+
+        <EditText
+            android:id="@+id/nomorHp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="nomor hp"
+            android:inputType="number"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/hargaUpdate"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/hargaUpdate"
+            app:layout_constraintTop_toBottomOf="@+id/hargaUpdate"
+            app:layout_constraintVertical_bias="0.06" />
+
+        <EditText
+            android:id="@+id/hargaUpdate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="harga"
+            android:inputType="number"
+            android:textColorHint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/alamatUpdate"
+            app:layout_constraintStart_toStartOf="@+id/alamatUpdate"
+            app:layout_constraintTop_toBottomOf="@+id/alamatUpdate"
+            app:layout_constraintVertical_bias="0.060000002" />
+
+        <Button
+            android:id="@+id/confirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="confirm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nomorHp"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/JudulActivity"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="UPDATE DATA"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.084" />
+
+        <ImageView
+            android:id="@+id/btnCancel"
+            android:layout_width="46dp"
+            android:layout_height="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.002"
+            app:srcCompat="@drawable/ic_back" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,5 +25,13 @@
             app:destination="@id/tambahLapangan"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <action
+            android:id="@+id/action_fragmentDashboardAdmin_to_listLapangan"
+            app:destination="@id/listLapangan" />
     </fragment>
+    <activity
+        android:id="@+id/listLapangan"
+        android:name="com.ndaktau.kila.ListLapangan"
+        android:label="activity_list_lapangan"
+        tools:layout="@layout/activity_list_lapangan" />
 </navigation>

@@ -13,7 +13,14 @@ import androidx.navigation.Navigation;
 
 
 public class FragmentDashboardAdmin extends Fragment {
-    private Button logOut,tmbhLapangan;
+    private Button logOut;
+    private Button tmbhLapangan;
+    private Button listLapangan;
+
+
+
+
+
 
     public Button getLogOut() {
         return logOut;
@@ -36,8 +43,10 @@ public class FragmentDashboardAdmin extends Fragment {
         View view = inflater.inflate(R.layout.fragment_dashboard_admin, container, false);
         setLogOut(view);
         setTmbhLapangan(view);
+        setListLapangan(view);
         getLogOut().setOnClickListener(v -> logout());
         getTmbhLapangan().setOnClickListener(v -> moveToTambahLapangan(v));
+        getListLapangan().setOnClickListener(v -> moveToListLap(v));
         return view;
     }
 
@@ -62,6 +71,14 @@ public class FragmentDashboardAdmin extends Fragment {
         requireActivity().finish();
     }
 
+    private void moveToListLap(View view){
+//        Navigation.findNavController(view).navigate(R.id.listLapangan);
+//        Intent intent = new Intent(getActivity(), ListLapangan.class);
+//        startActivity(intent);
+        Navigation.findNavController(view).navigate(R.id.listLapangan);
+    }
+
+
     public Button getTmbhLapangan() {
         return tmbhLapangan;
     }
@@ -69,4 +86,13 @@ public class FragmentDashboardAdmin extends Fragment {
     public void setTmbhLapangan(View view) {
         this.tmbhLapangan = view.findViewById(R.id.btnTambahLap);
     }
+
+    public Button getListLapangan() {
+        return listLapangan;
+    }
+
+    public void setListLapangan(View view) {
+        this.listLapangan = view.findViewById(R.id.list_lapangan);
+    }
+
 }
