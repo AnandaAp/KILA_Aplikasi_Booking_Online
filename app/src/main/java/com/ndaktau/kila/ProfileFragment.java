@@ -37,7 +37,7 @@ public class ProfileFragment extends Fragment {
         this.btnLogOut = view.findViewById(R.id.btnLogOut);
     }
 
-/////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////
     private TextView btnLogOut,tvjdlnama,tvnama,tvemail;
     private String[] name,emai,password;
     private FirebaseFirestore db ;
@@ -105,7 +105,6 @@ public class ProfileFragment extends Fragment {
                         tvnama.setText(documentSnapshot.get("Name").toString());
                     }
                 });
-//
 //                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 //                    @Override
 //                    public void onComplete(@NonNull Task<QuerySnapshot> task) {

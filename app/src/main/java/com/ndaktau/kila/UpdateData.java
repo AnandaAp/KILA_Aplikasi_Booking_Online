@@ -54,6 +54,7 @@ public class UpdateData extends AppCompatActivity {
 //                tempKontak = Long.parseLong(kontak.getText().toString().trim());
                 if(checkNama(tempNama)){
                     updateData(tempNama,tempAlamat,Long.parseLong(harga.getText().toString().trim()),Long.parseLong(kontak.getText().toString().trim()));
+                    LoginActivity.setAddToDB(1);
                 }
         });
     }

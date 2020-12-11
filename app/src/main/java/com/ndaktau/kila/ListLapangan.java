@@ -52,7 +52,11 @@ public class ListLapangan extends AppCompatActivity {
 //        else if(prev < LoginActivity.getAddToDB()){
 //            getAllDocument();
 //        }
-        getAllDocument();
+//        getAllDocument();
+        do{
+            getAllDocument();
+        }while (LoginActivity.getAddToDB() > prev);
+
 
 //        final Runnable r = new Runnable() {
 //            public void run() {
@@ -264,7 +268,7 @@ public class ListLapangan extends AppCompatActivity {
 //                    }
 //                });
 //    }
-    private void getAllDocument() {
+    public void getAllDocument() {
         Log.i(TAG, "getAllDocument: masuk logi");
         db.collection("DaftarLapangan")
                 .get()
